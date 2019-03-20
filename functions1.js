@@ -16,6 +16,9 @@ o.f = getGreeting;
 
 const arr = [1, 2, 3];
 arr[1] = getGreeting; //arr is now [1, function getGreeting(), 2]
+//^^ looks like the book made an error! last value in arr should be 3, as
+// the function replaced index 1, which was the number 2
+
 
 
 getGreeting();
