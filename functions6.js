@@ -47,3 +47,15 @@ console.log(addPrefix("con", "verse", "vex", "vince", "cede"));
 //with the value of "prefix" combined with the value of every other index
 //then it returns the array
 //just WOW!
+//when you use the SPREAD operator in a function declaration, it MUST be the last argument!
+
+//Default Arguments in Functions
+
+function f(a, b = 3, c = "default", d) {
+    return `${a} - ${b} - ${c} - ${d}`;
+}
+
+console.log(f(5, 6, 7));
+console.log(f(5, 6));
+console.log(f(5));
+console.log(f());
