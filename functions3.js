@@ -5,7 +5,7 @@ function f(x) {
 }
 //function defined
 
-let x = 3;
+let x = 3;//variable assigned, note that it's a primitive
 //x is assigned the value 3 outside of the function
 console.log(`before calling f: x=${x}`);
 //x is 3 before the function is called
