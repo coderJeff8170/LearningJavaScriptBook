@@ -51,3 +51,12 @@ const j = {
 console.log(j.greetBackwards());
 
 //make sure this second variable is used wherever you'd expect to see `this` keyword
+
+//arrow notation
+
+const f1 = function() { return "hello!"};
+//or
+const f2 = () => "hello!";
+//same thing basically
+console.log(f1());
+console.log(f2());
