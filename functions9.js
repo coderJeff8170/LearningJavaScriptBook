@@ -28,6 +28,19 @@ update.call(madeline, 1942, 'actress');
 console.log(bruce);//obj bruce is updated!
 console.log(madeline);//obj madeline is updated!
 
+update.apply(bruce, [1955, "actor"]);
+//bruce is now {name: "Bruce", birthYear: 1955,
+//occupation: "actor"}
+update.apply(madeline, [1918, "writer"]);
+//bruce is now {name: "Bruce", birthYear: 1918,
+//occupation: "writer"}
+console.log(bruce);//obj bruce is updated!
+console.log(madeline);//obj madeline is updated!
+//apply is useful if you have an array, and want to use it's values as arguments to a function (parse!)
+
+const jeffsArray = [2, 3, -5, 15, 19];
+console.log(Math.min.apply(null, jeffsArray)); //returns -5
+console.log(Math.max.apply(null, jeffsArray)); //returns 19
 
 
 
