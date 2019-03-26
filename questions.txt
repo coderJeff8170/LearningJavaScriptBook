@@ -1,0 +1,3 @@
+when you put variables inside an object, does that mean they are not available outside
+that object, except when called?
+-as in user {name, age}
