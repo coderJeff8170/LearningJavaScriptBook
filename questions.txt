@@ -3,3 +3,20 @@ that object, except when called?
 -as in user {name, age}
 
 ask about //     return new Date().getFullYear() - age;
+
+ask about //     return new Date().getFullYear() - user.age;
+            //     return new Date().getFullYear() - this.age;
+
+let globalFunc; //undefined global function
+{
+    let blockVar = 'a'; //block scoped variable
+    globalFunc = function() {
+        console.log(blockVar);
+    }
+}
+globalFunc();   HOW COME globalfunc is available outside the block, even when you remove it's declaration?
+
+ask about the closure with "not so safe after all"
+//not sure of the implications of this, but i suspect that things within the closure can
+//be changed? OOOOOOOHHHHHHH! Yah. You can change F from outside the closure by assigning
+// it to a variable. This is why IIFEs are so important?
