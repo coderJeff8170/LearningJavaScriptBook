@@ -20,3 +20,8 @@ ask about the closure with "not so safe after all"
 //not sure of the implications of this, but i suspect that things within the closure can
 //be changed? OOOOOOOHHHHHHH! Yah. You can change F from outside the closure by assigning
 // it to a variable. This is why IIFEs are so important?
+
+when we talk about the most recent elements on a stack, as in push and pop, are 
+we talking about the end of the array, or just the most recent added (as in the fucking middle!?)
+and when we talk about the oldest elements on a queue, as in shift and unshift, are 
+we talking about the beginning of the array?
