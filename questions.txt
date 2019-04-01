@@ -25,3 +25,6 @@ when we talk about the most recent elements on a stack, as in push and pop, are
 we talking about the end of the array, or just the most recent added (as in the fucking middle!?)
 and when we talk about the oldest elements on a queue, as in shift and unshift, are 
 we talking about the beginning of the array?
+
+in the beginning the author mentions using consts as much as possible (that refer to a specific number or string1)
+He says it's best to capitalize them so they're easy to recognize? what does he mean by this^^
