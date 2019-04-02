@@ -34,9 +34,50 @@ console.log(arr2.concat(4, [5, 6])); //returns [1, 2, 3, 4, 5, 6] arr2 unmodifie
 
 const arr3 = [1, 2, 3, 4, 5];
 
-console.log();
-console.log();
-console.log();
+console.log(arr3.slice(3));// returns subarray [4,5] (starts at index 3, returns rest)
+console.log(arr3.slice(2, 4));// [3, 4] (starts at index 2, ends at 4 noninclusive)
+console.log(arr3.slice(-2));// [4, 5] (starts at index -2, returns rest)
+console.log(arr3.slice(1, -2));// [2, 3] second argument always noninclusive!
+console.log(arr3.slice(-2, -1));// [4] remember^^
 
-console.log();
+//splice allows you to add to the array, in-place. First index is start, second
+//is number of elements to remove, and remaining arguments are those to be added:
+
+const arr4 = [1, 5, 7];
+
+console.log(arr4.splice(1, 0, 2, 3, 4));// returns []; arr4 is now [1, 2, 3, 4, 5, 7]
+console.log(arr4.splice(5, 0, 6));// returns []; arr4 is now [1, 2, 3, 4, 5, 6, 7]
+console.log(arr4.splice(1, 2));// return [2, 3]; arr4 is now [1, 4, 5, 6, 7]
+console.log(arr4.splice(2, 1, 'a', 'b'));// returns [5]; arr4 is now [1, 4, 'a', 'b', 6, 7]
+
+//copyWithin is new to ES6; It allows you to copy a portion of an array and overwrite
+//elements elsewhere in said array. First argument: target(where to copy to), second argument
+//where to copy from, and third, optional argument, where to stop copying from.
+
+const arr5 = [1, 2, 3, 4];
+
+console.log(arr5.copyWithin(1, 2));//arr5 is now [1, 3, 3, 4]
+console.log(arr5.copyWithin(2, 0, 2));//arr5 is now [1, 3, 1, 3]
+console.log(arr5.copyWithin(0, -3, -1));//arr5 is now [1, 3, 1, 3]
+//remember that end argument is noninclusive!
+
+//fill is also new to ES6; Allows you to set any number of elements with a fixed value in place.
+//particularly useful when used with array constructor (which allows you to specify initial size
+//of array). You can optionally specify a start and end index if you only wish to fill
+//part of the array:
+
+const arr6 = new Array(5).fill(1); //arr6 is initialized to [1, 1, 1, 1, 1]
+
+console.log(arr6.fill("a"));//arr 6 is now ["a", "a", "a", "a", "a"]
+console.log(arr6.fill("b", 1));//arr 6 is now ["a", "b", "b", "b", "b"]
+console.log(arr6.fill("c", 2, 4));//arr 6 is now ["a", "b", "c", "c", "b"]
+console.log(arr6.fill(5.5, -4));//arr 6 is now ["a", 5.5, 5.5, 5.5, 5.5]//start index inclusive!
+console.log(arr6.fill(0, -3, -1));//arr 6 is now ["a", 5.5, 0, 0, 5.5]//end index not!!
+
+
+
+
+
+
+
 
