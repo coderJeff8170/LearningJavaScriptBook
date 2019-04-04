@@ -28,3 +28,5 @@ we talking about the beginning of the array?
 
 in the beginning the author mentions using consts as much as possible (that refer to a specific number or string1)
 He says it's best to capitalize them so they're easy to recognize? what does he mean by this^^
+
+how come you cant look up a subarray with indexOf?
