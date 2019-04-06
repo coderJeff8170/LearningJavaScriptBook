@@ -23,5 +23,17 @@ console.log(cards.filter(c => c.value > 10 && c.suit === 'H'));
 //and if we want to create a short string rep of the deck:
 
 function cardToString(c) {
-    
+    const suits = { 'H': 'u\2665', 'C': 'u\2663', 'D': 'u\2666', 'S': 'u\2660' };
+    const values = { 1: 'A', 11: 'J', 12: 'Q', 13: 'K' };
+    //constructing values every time we call card/ToString is not very efficient;
+    //a better solution is a readers exercise!
+    for(let i=2; i<=10; i++) value[i] = i;
+    return values[c.value] + suits[c.suit];
 }
+//get all cards with value 2:
+cards.filter(c => c.value === 2)
+    .map(cardToString);
+
+//get all face cards that are hearts
+cards.filter(c => c.value > 10 && c.suit === 'H')
+    .map(cardToString);
