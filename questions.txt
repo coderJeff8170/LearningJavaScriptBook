@@ -30,3 +30,5 @@ in the beginning the author mentions using consts as much as possible (that refe
 He says it's best to capitalize them so they're easy to recognize? what does he mean by this^^
 
 how come you cant look up a subarray with indexOf?
+
+address the book example of class constructor. Why two parameters, but four properties?
