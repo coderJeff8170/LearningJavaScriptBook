@@ -32,3 +32,8 @@ He says it's best to capitalize them so they're easy to recognize? what does he 
 how come you cant look up a subarray with indexOf?
 
 address the book example of class constructor. Why two parameters, but four properties?
+
+when adding properties to a class with a method with only one parameter, can u add multiples?
+
+//so the book says toString() is a method that inherits from Object,
+//but if you name it something else, it still does the same thing. What the hell?
