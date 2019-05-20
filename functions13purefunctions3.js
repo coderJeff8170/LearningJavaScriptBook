@@ -29,10 +29,10 @@ const getNextRainbowColor = (function() {
 //perhaps it's going to change colors of an element in the browser at 
 //certain intervals:
 
-setInterval(function() {
+/* setInterval(function() {
     document.querySelector('.rainbow')
         .style['background-color'] = getNextRainbowColor();
-}, 500);
+}, 500); */
 
 //seems like it would work, but if something else called getNextRainbowColor(),
 //it might interfere with this code. At this point, we might question whether
@@ -58,6 +58,10 @@ setInterval(function(){
     document.querySelector('.rainbow')
         .style['background-color'] = rainbowIterator.next().value;
 }, 500);
+
+//notice that next() is returning a different value each time now - but next() is a method
+//of the Iterator object - it belongs to that object, and so any time getRainbowIterator is called,
+//a different instance of that iterator is made - by nature preventing side effects.
 
 
 
