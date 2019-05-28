@@ -29,10 +29,14 @@ const lcNames = names.map(x => x.toLowerCase());
 //^^this should be const lcNames = names.map(String.toLowerCase); but I can't get it to work. It says names.map is undefined
 
 
-console.log(names);
-console.log(prices);
-console.log(discountPrices);
-console.log(lcNames);
+console.log(names); //[ 'Widget', 'Gadget' ]
+console.log(prices);//[ 9.95, 22.95 ]
+console.log(discountPrices);//[ 7.96, 18.36 ]
+console.log(lcNames);// [ 'widget', 'gadget' ]
+
+//so if I had an array:
+
+
 
 //if we had items and prices in two separate arrays we can use map to combine them:
 

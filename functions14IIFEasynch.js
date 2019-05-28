@@ -41,3 +41,17 @@ for(b=5; b>=0; b--) {
 }
 //what's crazy here is that both of these run at the same time, so the output is concurrent
 // 55 44 33 22 11 gogo! nuts!
+
+//block scoped variables, however, solve this problem with much more elegance:
+
+for(let c=5; c>=0; c--) {
+    setTimeout(function() {
+        console.log(c===0 ? "go" : c);
+    }, (5-c)*1000);
+}
+
+for(var d=5; d>=0; d--) {
+    setTimeout(function() {
+        console.log(d===0 ? "go" : d);
+    }, (5-d)*1000);
+}//very interesting! see the difference with let and var!
