@@ -1,28 +1,28 @@
-// so let's say i had an array:
-
-let hand = [1, 1, 1, 1, 1, 1];
-/* let allEqual = function identical(array) {
-    for(i=0; i<array.length-1; i++) {
-        if (array[i] !== array[i+1]) {
-            return false;
-        }
+const pipeline = [
+    
+    function calcTax(x) {
+        let tax = x * 0.08;
+        return tax;
+    },
+    
+    function addTax(x) {
+        x = x + tax;
+        return x;
     }
-    return true;
-} */
-//allEqual(hand);
 
-let ones = hand.filter(x => x === 1);
-        if (ones.length === 6){
-        'you have 1000 points!';
-        } else if(ones.length === 3) {
-        'you have 500 points!';
-        } else if (ones.length === 1) {
-        'you have 50 points!'
-        } else {
-        'keep trying for more ones';
-        }
+];
 
 
-//console.log(ones);
 
-//scope!! ack!!
+let z = 20;
+
+
+function runPipeline(x) {
+    for(let i=0; i<pipeline.length; i++) {
+        x = pipeline[i](x);//must call each function in the pipeline!!
+        return x;
+    }
+
+}
+
+console.log(runPipeline(z));

@@ -4,14 +4,19 @@
 
 const pipeline = [
     
-    function calcTax(x) {
-        let tax = x * 0.08;
+    function calcTax1(x) {
+        let tax = x * 0.1;
         return tax;
     },
     
-    function addTax(tax) {
-        x = x + tax;
-        return x;
+    function calcTax2(x) {
+        let tax = x * 0.2;
+        return tax;
+    },
+
+    function calcTax3(x) {
+        let tax = x * 0.3;
+        return tax;
     }
 
 ];
