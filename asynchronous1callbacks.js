@@ -28,10 +28,12 @@ const intervalId = setInterval(function(){
         return clearInterval(intervalId);
     console.log(`${i}: ${now}`);
 
-}, 5*1000);
+}, 1*1000);
 
 //why does this run automatically?
 //another example of why this book can be maddening. 
 //probably because setInterval is immediately invoked function expression?
 //naming it doesn't prevent it from functioning, just provides a way to stop it....
 //Jesus!
+
+
