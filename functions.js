@@ -19,3 +19,5 @@ arr[1] = getGreeting; //arr is now [1, function getGreeting(), 2]
 
 
 getGreeting();
+
+
