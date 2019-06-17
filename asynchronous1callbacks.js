@@ -55,7 +55,7 @@ countdown(); */
 
 //if we move the declaration of inside the for loop tho....
 
-function countdown() {
+/* function countdown() {
     console.log('countdown!');
     for(let i=5; i>=0; i--) {
         setTimeout(function() {
@@ -63,7 +63,7 @@ function countdown() {
         }, (5-i)*1000);
     }
 }
-countdown();
+countdown(); */
 
 //Error first callbacks -
 // i dont understand this completely YET. But if you have to write a callback it should follow
@@ -72,15 +72,56 @@ countdown();
 
 //eg:
 
-const fs = require('fs');
+/* const fs = require('fs');
 
 const fname = 'may_or_may_not_exist.txt';
 fs.readFile(fname, function(err, data) {
     if(err) return console.error(`error reading file ${fname}: ${err.message}`);
     console.log(`${fname} contents: ${data}`);
-});
+}); */
 
 //^^ note the return
 //interesting result: error reading file may_or_may_not_exist.txt: ENOENT: no such file or directory, open 'may_or_may_not_exist.txt'
 //actually works even without the required file - node provides some extra documentation
 //and it runs at second two (between 5 and 4) of the countdown! Talk about asynchronous!!
+
+/* const fs = require('fs');
+
+fs.readFile('a.txt', function(err, dataA) {
+    if(err) console.error(err);
+    fs.readFile('a.txt', function(err, dataB) {
+        if(err) console.error(err);
+        fs.readFile('a.txt', function(err, dataC) {
+            if(err) console.error(err);
+            setTimeout(function() {
+                fs.writeFile('d.txt', dataA+dataB+dataC, function(err) {
+                    if(err) console.error(err);
+                });
+            }, 6*1000);
+        });
+    });
+}); */
+
+//^^callback hell!
+
+//a simpler example:
+
+const fs = require('fs');
+
+function readSketchyFile() {
+    try{
+        fs.readFile('does_not_exist.txt', function(err, data) {
+            if(err) throw err;
+        });
+    } catch(err) {
+        console.log('warning: minor issue occurred, program continuing');
+    }
+}
+readSketchyFile();
+//^^looks like it would work, but it won't. try...catch blocks only work within the same function;
+//since the err is thrown inside the anonymous function that fs.readFile invokes as a callback,
+//it's out of scope!
+
+//additionally, there's nothing to prevent it being called multiple times or never.
+
+//this is where promises come in...apparently.
