@@ -62,12 +62,57 @@ function grun(g) {
 
 //author says this is a very modest recursive generator runner. Basically, as complex as it looks, you just pass it a generator function, and it'll run it. Generators that call 'yield' will pause until next is called on the iterator. Recursively in this case. All of this enables us to plug in something very much like the pseudocode, using nfcall to marry the past (node error first callbacks) to the present (promises)
 
+// function* theFutureIsNow() {
+//     const dataA = yield nfcall(fs.readFile, 'a.txt');
+//     const dataB = yield nfcall(fs.readFile, 'b.txt');
+//     const dataC = yield nfcall(fs.readFile, 'c.txt');
+//     yield ptimeout(60*100);
+//     yield nfcall(fs.writeFile, 'd.txt', dataA+dataB+dataC);
+// }//we can add the 'all' method of Promise, to read all files in parallel for more efficiency:
+// function* theFutureIsNow() {
+//     const data = yield Promise.all([
+//         dataA = yield nfcall(fs.readFile, 'a.txt'),
+//         dataB = yield nfcall(fs.readFile, 'b.txt'),
+//         dataC = yield nfcall(fs.readFile, 'c.txt')
+//     ]);
+//     yield ptimeout(60*100);
+//     yield nfcall(fs.writeFile, 'd.txt', data[0]+data[1]+data[2]);
+// } //addd benefit is we can add try/catch exception handlers, which are problematic with just callbacks and promises, because an exception thrown inside a callback can't be caught from outside...
+
 function* theFutureIsNow() {
-    const dataA = yield nfcall(fs.readFile, 'a.txt');
-    const dataB = yield nfcall(fs.readFile, 'b.txt');
-    const dataC = yield nfcall(fs.readFile, 'c.txt');
+    let data;
+    try {
+        data = yield Promise.all([
+        dataA = yield nfcall(fs.readFile, 'a.txt'),
+        dataB = yield nfcall(fs.readFile, 'b.txt'),
+        dataC = yield nfcall(fs.readFile, 'c.txt')
+        ]);
+    } catch(err) {
+        console.error("Unable to read one or more input files: " + err.message);
+        throw err;
+    }
     yield ptimeout(60*100);
-    yield nfcall(fs.writeFile, 'd.txt', dataA+dataB+dataC);
+    try {
+        yield nfcall(fs.writeFile, 'd.txt', data[0]+data[1]+data[2]);
+    } catch (error) {
+        console.error("Unable to write output file: " + err.message);
+        throw err;
+    }
+    
 }
+
+
+/* Read File */
+fs.readFile('d.txt', bar)
+
+function bar (err, data)
+  {
+  /* If an error exists, show it, otherwise show the file */
+  
+  err ? Function("error","throw error")(err) : console.log(JSON.stringify(data) );
+  };
+
 grun(theFutureIsNow);
 //that is really cool!
+
+//CONSIDER WHICH PARTS OF PROGRAM CAN BE RUN IN PARALLEL, AND WHICH CANNOT...
