@@ -29,6 +29,27 @@ const moment = require('moment-timezone');
 //npm install --save moment-timezone
 //const moment = require('moment-timezone');
 //avoid using local timezones on the server,since it could be accessed from around the world - use moment.js to handle conversion and display of dates in other tzs
-const d = new Date(Date.UTC(2020, 2, 4));//March 4, 2020
+//const d = new Date(Date.UTC(2020, 2, 4));//March 4, 2020
 
-console.log(d);
+//const d = moment.tz([2020, 3, 2, 9, 30], 'America/New_York').toDate();//it works!
+// const before = { d: new Date() };
+// before.d instanceof Date                //true
+// const json = JSON.stringify(before);
+// const after = JSON.parse(json);
+// after.d instanceof Date                 //false
+// typeof after.d                          //'string'
+// // JSON can't seamlessly and symmetrically handle dates - but you can use serialization to recover the date:\
+// after.d = new Date(after.d);
+// after.d instanceof Date                 //now true
+
+// the easiest way to handle dates is simply to use the numeric value:
+
+const before = { d: new Date().valueOf() };
+typeof before.d                            //number
+const json = JSON.stringify(before);
+const after = JSON.parse(json);
+typeof after.d                              //number
+const d = new Date(after.d);
+
+console.log(before.d);
+
